@@ -3,7 +3,7 @@ package com.larramendi.course;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication  //Configura o projeto para que seja um projeto SpringBoot
+@SpringBootApplication  //Configura o projeto para que seja um projeto SpringBootr
 public class CourseApplication {
 
 	public static void main(String[] args) {
