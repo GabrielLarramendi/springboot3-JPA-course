@@ -1,10 +1,16 @@
 package com.larramendi.course.entities;
 
+import jakarta.persistence.*;
+
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
+@Table(name = "tb_user") //Como 'User' é uma palavra utilizada no dbH2, é necessário renomear o nome da tabela para evitar conflitos;
 public class User implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
     private String email;
