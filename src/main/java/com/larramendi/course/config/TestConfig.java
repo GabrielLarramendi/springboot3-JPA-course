@@ -12,7 +12,7 @@ import java.util.Arrays;
 @Configuration  //Annotation para dizer que é uma classe de configuração
 @Profile("test") //Spring só roda a configuação quando estiver no perfil de teste
 public class TestConfig implements CommandLineRunner {
-
+//Serve para databaseseeding
     @Autowired
     private UserRepository userRepository;
 
