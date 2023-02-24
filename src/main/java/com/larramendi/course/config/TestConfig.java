@@ -1,14 +1,8 @@
 package com.larramendi.course.config;
 
-import com.larramendi.course.entities.Category;
-import com.larramendi.course.entities.Order;
-import com.larramendi.course.entities.Product;
-import com.larramendi.course.entities.User;
+import com.larramendi.course.entities.*;
 import com.larramendi.course.entities.enums.OrderStatus;
-import com.larramendi.course.repositories.CategoryRepository;
-import com.larramendi.course.repositories.OrderRepository;
-import com.larramendi.course.repositories.ProductRepository;
-import com.larramendi.course.repositories.UserRepository;
+import com.larramendi.course.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -32,6 +26,9 @@ public class TestConfig implements CommandLineRunner {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private OrderItemRepository orderItemRepository;
 
     @Override
     public void run(String... args) throws Exception { //Para instanciar os objeto e salvar no banco de dados
@@ -66,5 +63,13 @@ public class TestConfig implements CommandLineRunner {
 
         userRepository.saveAll(Arrays.asList(u1, u2));
         orderRepository.saveAll(Arrays.asList(o1, o2, o3));
+
+        OrderItem oi1 = new OrderItem(o1, p1, 2, p1.getPrice());
+        OrderItem oi2 = new OrderItem(o1, p3, 1, p3.getPrice());
+        OrderItem oi3 = new OrderItem(o2, p3, 2, p3.getPrice());
+        OrderItem oi4 = new OrderItem(o3, p5, 2, p5.getPrice());
+
+        orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
+
     }
 }
