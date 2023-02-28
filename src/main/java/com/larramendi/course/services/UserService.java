@@ -2,6 +2,7 @@ package com.larramendi.course.services;
 
 import com.larramendi.course.entities.User;
 import com.larramendi.course.repositories.UserRepository;
+import com.larramendi.course.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,8 @@ public class UserService {
 
     public User findById(Long id) {
         Optional<User> obj = userRepository.findById(id);
-        return obj.get();
+        return obj.orElseThrow(() -> new ResourceNotFoundException(id));
+        //Tenta dar o get, caso nao tenha usuario, tenta lançar uma excessão (ResourceNotFoundException)
     }
 
     public User intert(User obj) {
